@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alina Site Template</title>
+    <title>ALINA Official Website</title>
     <style>
         :root {
             --speed: 0.4s;
@@ -33,7 +33,6 @@
 
         .corner {
             position: absolute;
-            /* Smaller corners */
             width: 35%; 
             height: 35%;
             transition: transform var(--speed) ease-out;
@@ -59,7 +58,71 @@
             z-index: 1;
         }
 
-        /* CENTER EYE - BIGGER */
+        /* LABEL FOR GALLERY CORNER */
+        .corner-label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 45%;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: rgba(0,0,0,0.5);
+            z-index: 2;
+            pointer-events: none;
+            letter-spacing: 2px;
+        }
+
+        /* GALLERY OVERLAY */
+        #gallery-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 100;
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 40px;
+        }
+
+        /* POLAROID STYLE */
+        .polaroid {
+            background: #fff;
+            padding: 10px 10px 35px 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            margin: 15px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .polaroid img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .polaroid:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            z-index: 110;
+        }
+
+        #close-x {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            font-family: sans-serif;
+            z-index: 120;
+        }
+
+        /* CENTER EYE */
         .eye-container {
             position: relative;
             z-index: 10;
@@ -69,7 +132,6 @@
             justify-content: center;
             align-items: center;
             pointer-events: auto; 
-            /* This line moves the eye slightly lower */
             transform: translateY(30px); 
         }
 
@@ -93,7 +155,8 @@
             <img src="orange-paper.png" class="paper-img" alt="Orange Paper">
         </div>
 
-        <div class="corner top-right">
+        <div class="corner top-right" onclick="openGallery()">
+            <div class="corner-label">GALLERY</div>
             <img src="blue-paper.png" class="paper-img" alt="Blue Paper">
         </div>
 
@@ -110,6 +173,34 @@
             <img src="eye-blinking.png" class="eye-center eye-blinking" alt="Alina Eye Blinking">
         </div>
     </div>
+
+    <div id="gallery-overlay">
+        <span id="close-x" onclick="closeGallery()">&times;</span>
+        
+        <div class="polaroid" style="transform: rotate(-6deg);"><img src="gallery-1.jpg" alt="Gallery 1"></div>
+        <div class="polaroid" style="transform: rotate(4deg);"><img src="gallery-2.jpg" alt="Gallery 2"></div>
+        <div class="polaroid" style="transform: rotate(-2deg);"><img src="gallery-3.jpg" alt="Gallery 3"></div>
+        <div class="polaroid" style="transform: rotate(7deg);"><img src="gallery-4.jpg" alt="Gallery 4"></div>
+    </div>
+
+    <script>
+        const overlay = document.getElementById('gallery-overlay');
+
+        function openGallery() {
+            overlay.style.display = 'flex';
+        }
+
+        function closeGallery() {
+            overlay.style.display = 'none';
+        }
+
+        // Close when clicking the dark background
+        window.onclick = function(event) {
+            if (event.target == overlay) {
+                closeGallery();
+            }
+        }
+    </script>
 
 </body>
 </html>
