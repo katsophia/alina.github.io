@@ -43,15 +43,8 @@
             z-index: 5;
         }
 
-        /* Top Right is not a link, so we remove the pointer cursor */
-        .top-right { 
-            top: 0; 
-            right: 0; 
-            transform-origin: top right; 
-            cursor: default; 
-        }
-
         .top-left     { top: 0; left: 0; transform-origin: top left; }
+        .top-right    { top: 0; right: 0; transform-origin: top right; }
         .bottom-left  { bottom: 0; left: 0; transform-origin: bottom left; }
         .bottom-right { bottom: 0; right: 0; transform-origin: bottom right; }
 
@@ -93,6 +86,49 @@
         .eye-container:hover .eye-resting { opacity: 0; }
         .eye-container:hover .eye-blinking { opacity: 1; }
 
+        /* Gallery Overlay Styles */
+        #gallery-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .gallery-content {
+            max-width: 80%;
+            max-height: 80%;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery-content img {
+            width: 300px;
+            height: auto;
+            border: 5px solid #fff;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .close-gallery {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-family: sans-serif;
+            cursor: pointer;
+        }
+
+        /* Social Footer */
         .social-footer {
             position: absolute;
             bottom: 30px;
@@ -132,7 +168,7 @@
             <img src="orange-paper.png" class="paper-img" alt="Orange Paper">
         </a>
 
-        <div class="corner top-right">
+        <div class="corner top-right" onclick="openGallery()">
             <img src="blue-paper.png" class="paper-img" alt="Blue Paper">
         </div>
 
@@ -167,6 +203,23 @@
             </a>
         </div>
     </div>
+
+    <div id="gallery-overlay" onclick="closeGallery()">
+        <span class="close-gallery">&times;</span>
+        <div class="gallery-content">
+            <img src="gallery-image-1.png" alt="Gallery Photo 1" onclick="event.stopPropagation()">
+        </div>
+    </div>
+
+    <script>
+        function openGallery() {
+            document.getElementById('gallery-overlay').style.display = 'flex';
+        }
+
+        function closeGallery() {
+            document.getElementById('gallery-overlay').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
