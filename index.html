@@ -15,21 +15,18 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
-            background-color: #000; /* Backup color if image fails */
+            background-color: #000; 
         }
 
-        /* THE MAIN BACKGROUND IMAGE SECTION */
+        /* THE MAIN BACKGROUND IMAGE */
         .stage {
             position: relative;
             width: 100vw;
             height: 100vh;
-            
-            /* This is where your brown paper image goes */
             background-image: url('brown-paper.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-
             display: flex;
             justify-content: center;
             align-items: center;
@@ -57,7 +54,6 @@
         .bottom-left:hover  { transform: scale(1.05) translate(10px, -10px); }
         .bottom-right:hover { transform: scale(1.05) translate(-10px, -10px); }
 
-        /* THE IMAGE HOLDERS (The 4 colored papers) */
         .paper-img {
             width: 100%;
             height: 100%;
@@ -68,7 +64,6 @@
             z-index: 1;
         }
 
-        /* THE TEXT/HANDWRITING OVERLAY */
         .text-overlay {
             position: absolute;
             z-index: 2;
@@ -76,18 +71,42 @@
             pointer-events: none;
         }
 
-        /* Positioning the handwriting on the paper */
         .top-left .text-overlay     { bottom: 15%; right: 15%; }
         .top-right .text-overlay    { bottom: 15%; left: 15%; }
         .bottom-left .text-overlay  { top: 15%; right: 15%; }
         .bottom-right .text-overlay { top: 15%; left: 15%; }
 
-        /* THE CENTRAL EYE ART */
-        .eye-center {
+        /* --- CENTER EYE HOVER LOGIC --- */
+        .eye-container {
             position: relative;
             z-index: 10;
             width: 50vw;
+            height: 50vh; /* Keeps the container area proportional */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: auto; 
+        }
+
+        .eye-center {
+            position: absolute;
+            width: 100%;
+            height: auto;
             pointer-events: none;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* Initially hide the blinking eye */
+        .eye-blinking {
+            opacity: 0;
+        }
+
+        /* Swap images on hover */
+        .eye-container:hover .eye-resting {
+            opacity: 0;
+        }
+        .eye-container:hover .eye-blinking {
+            opacity: 1;
         }
     </style>
 </head>
@@ -115,7 +134,10 @@
             <img src="gallery-text.png" class="text-overlay" alt="Gallery Label">
         </div>
 
-        <img src="eye-artwork.png" class="eye-center" alt="Alina Eye">
+        <div class="eye-container">
+            <img src="eye-resting.png" class="eye-center eye-resting" alt="Alina Eye">
+            <img src="eye-blinking.png" class="eye-center eye-blinking" alt="Alina Eye Blinking">
+        </div>
 
     </div>
 
