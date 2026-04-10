@@ -58,7 +58,6 @@
             z-index: 1;
         }
 
-        /* LABEL FOR GALLERY CORNER */
         .corner-label {
             position: absolute;
             width: 100%;
@@ -82,14 +81,13 @@
             height: 100%;
             background: rgba(0,0,0,0.9);
             z-index: 100;
-            display: none; /* Hidden by default */
+            display: none; 
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
             padding: 40px;
         }
 
-        /* POLAROID STYLE */
         .polaroid {
             background: #fff;
             padding: 10px 10px 35px 10px;
@@ -133,6 +131,7 @@
             align-items: center;
             pointer-events: auto; 
             transform: translateY(30px); 
+            text-decoration: none; /* Remove underline from link */
         }
 
         .eye-center {
@@ -151,27 +150,27 @@
 <body>
 
     <div class="stage">
-        <div class="corner top-left">
+        <a href="https://tr.ee/Vz93-mCO7m" target="_blank" class="corner top-left">
             <img src="orange-paper.png" class="paper-img" alt="Orange Paper">
-        </div>
+        </a>
 
         <div class="corner top-right" onclick="openGallery()">
             <div class="corner-label">GALLERY</div>
             <img src="blue-paper.png" class="paper-img" alt="Blue Paper">
         </div>
 
-        <div class="corner bottom-left">
+        <a href="https://partiful.com/e/geIYMQmLmrwp5hWKN2hl" target="_blank" class="corner bottom-left">
             <img src="green-paper.png" class="paper-img" alt="Green Paper">
-        </div>
+        </a>
 
-        <div class="corner bottom-right">
+        <a href="https://alinamerchofficial.myshopify.com/" target="_blank" class="corner bottom-right">
             <img src="purple-paper.png" class="paper-img" alt="Purple Paper">
-        </div>
+        </a>
 
-        <div class="eye-container">
+        <a href="https://www.postable.com/ALINAmusic" target="_blank" class="eye-container">
             <img src="eye-resting.png" class="eye-center eye-resting" alt="Alina Eye">
             <img src="eye-blinking.png" class="eye-center eye-blinking" alt="Alina Eye Blinking">
-        </div>
+        </a>
     </div>
 
     <div id="gallery-overlay">
@@ -194,7 +193,6 @@
             overlay.style.display = 'none';
         }
 
-        // Close when clicking the dark background
         window.onclick = function(event) {
             if (event.target == overlay) {
                 closeGallery();
