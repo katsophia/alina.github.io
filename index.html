@@ -43,8 +43,15 @@
             z-index: 5;
         }
 
+        /* Top Right is not a link, so we remove the pointer cursor */
+        .top-right { 
+            top: 0; 
+            right: 0; 
+            transform-origin: top right; 
+            cursor: default; 
+        }
+
         .top-left     { top: 0; left: 0; transform-origin: top left; }
-        .top-right    { top: 0; right: 0; transform-origin: top right; }
         .bottom-left  { bottom: 0; left: 0; transform-origin: bottom left; }
         .bottom-right { bottom: 0; right: 0; transform-origin: bottom right; }
 
@@ -70,6 +77,8 @@
             align-items: center;
             pointer-events: auto; 
             transform: translateY(30px); 
+            cursor: pointer;
+            text-decoration: none;
         }
 
         .eye-center {
@@ -119,26 +128,26 @@
 <body>
 
     <div class="stage">
-        <div class="corner top-left">
+        <a href="https://tr.ee/Vz93-mCO7m" class="corner top-left">
             <img src="orange-paper.png" class="paper-img" alt="Orange Paper">
-        </div>
+        </a>
 
         <div class="corner top-right">
             <img src="blue-paper.png" class="paper-img" alt="Blue Paper">
         </div>
 
-        <div class="corner bottom-left">
+        <a href="https://alinamerchofficial.myshopify.com/" class="corner bottom-left">
             <img src="green-paper.png" class="paper-img" alt="Green Paper">
-        </div>
+        </a>
 
-        <div class="corner bottom-right">
+        <a href="https://partiful.com/e/geIYMQmLmrwp5hWKN2hl" class="corner bottom-right">
             <img src="purple-paper.png" class="paper-img" alt="Purple Paper">
-        </div>
+        </a>
 
-        <div class="eye-container">
+        <a href="https://www.postable.com/ALINAmusic" class="eye-container">
             <img src="eye-resting.png" class="eye-center eye-resting" alt="Alina Eye">
             <img src="eye-blinking.png" class="eye-center eye-blinking" alt="Alina Eye Blinking">
-        </div>
+        </a>
 
         <div class="social-footer">
             <a href="https://open.spotify.com/artist/5dMqTi9pBymJAVzH9V7N86?si=auqlPJyQQJaqJBSPHdEJjw&nd=1&dlsi=830a02cd307e42f8" target="_blank" aria-label="Spotify">
